@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>TP2-jee-jsp</artifactId>
+    <artifactId>TP2</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>TP2-jee-jsp</name>
+    <name>TP2</name>
     <packaging>war</packaging>
 
     <properties>

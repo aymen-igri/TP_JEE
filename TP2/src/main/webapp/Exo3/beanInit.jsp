@@ -22,7 +22,7 @@
     <input type="submit" value="Envoyer" />
 </form>
 
-<jsp:useBean id="agence" class="com.example.tpp2.Bean.Agence" scope="session" />
+<jsp:useBean id="agence" class="com.example.tp2jeejsp.Exo3.Agence" scope="session" />
 <jsp:setProperty name="agence" property="*" />
 <jsp:setProperty name="agence" property="*"/>
 <jsp:setProperty name="agence" property ="*"/>
