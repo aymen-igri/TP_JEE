@@ -17,6 +17,7 @@ public class authentication implements Serializable {
         loadCredentials();
     }
 
+    // get the data from the authentication.properties file
     private void loadCredentials() {
         validCredentials = new Properties();
         try {
@@ -35,6 +36,7 @@ public class authentication implements Serializable {
         }
     }
 
+    //verify if the username and the password are correct
     public boolean authenticate() {
         if (username == null || password == null) {
             return false;
@@ -49,7 +51,6 @@ public class authentication implements Serializable {
         return false;
     }
 
-    // Getters and Setters
     public String getUsername() {
         return username;
     }
