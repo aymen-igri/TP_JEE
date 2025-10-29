@@ -17,7 +17,9 @@ public class BookManager {
         //update();
         //find();
         //remove();
-        query();
+        //query();
+        //addElements();
+        addPers();
         end();
     }
 
@@ -66,6 +68,27 @@ public class BookManager {
         for (Book b : list){
             System.out.println(b.getTitle() + " - " + b.getPrice());
         }
+    }
+
+    public static void addElements(){
+        for (int i=0; i<5; i++){
+            Book book = new Book();
+            book.setTitle("book " + (i+2));
+            book.setAuthor("author " + (i+2));
+            book.setPrice(10.0f + (i+50));
+            entityManager.persist(book);
+        }
+    }
+
+    public static void addPers(){
+        String jpql = "SELECT b FROM Book b WHERE b.price>=50";
+        Query q = entityManager.createQuery(jpql);
+        List<Book> list = q.getResultList();
+        for (Book b : list){
+            b.setPrice(b.getPrice() + (b.getPrice()*0.05f));
+            entityManager.merge(b);
+        }
+
     }
 
     public static void end(){
