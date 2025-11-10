@@ -1,9 +1,6 @@
 package DBOperation;
 
-import BooksManagement.Book;
-import BooksManagement.Category;
-import BooksManagement.Publisher;
-import BooksManagement.Review;
+import BooksManagement.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -23,10 +20,13 @@ public class Creation {
     }
 
     public static void create(){
-        Publisher publisher = new Publisher("Ahmed","Morocco");
+        Publisher publisher = new Publisher("Ahmed", "Morocco");
         System.out.println("Publisher created: " + publisher);
 
-        Book book = new Book("Java Programming", "John Doe", 29.99, 25);
+        Author author = new Author("amine", "amine@bookmail.com");
+        System.out.println("Author created: " + author);
+
+        Book book = new Book("Java Programming", 29.99, 25);
         System.out.println("Book created: " + book);
 
         Category category1 = new Category("Programming");
@@ -41,10 +41,13 @@ public class Creation {
 
         book.setPublisher(publisher);
 
+        book.setAuthor(author);
+
         book.getCategories().add(category1);
         book.getCategories().add(category2);
 
         entityManager.persist(publisher);
+        entityManager.persist(author);
         entityManager.persist(book);
         entityManager.persist(category1);
         entityManager.persist(category2);

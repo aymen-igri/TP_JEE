@@ -1,6 +1,7 @@
 package BooksManagement;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +17,12 @@ public class Book {
     @Column
     private String name;
     @Column
-    private String author;
-    @Column
     private Double price;
     @Column
     private Integer discountPrice;
+
+    @ManyToOne
+    private Author author;
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
@@ -39,9 +41,8 @@ public class Book {
 
     public Book (){}
 
-    public Book (String name, String author, Double price, Integer discountPrice){
+    public Book (String name, Double price, Integer discountPrice){
         this.name = name;
-        this.author = author;
         this.price = price;
         this.discountPrice = discountPrice;
     }
@@ -60,6 +61,10 @@ public class Book {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public void setAuthor(Author author){
+        this.author = author;
     }
 
     public String getName() {

@@ -7,12 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "publishers")
-public class Publisher {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column
-    private String name;
+public class Publisher extends Personne{
     @Column
     private String country;
 
@@ -23,7 +18,7 @@ public class Publisher {
     public Publisher (){}
 
     public  Publisher (String name, String country){
-        this.name = name;
+        super(name);
         this.country = country;
     }
 
@@ -32,6 +27,6 @@ public class Publisher {
     }
 
     public String getName() {
-        return this.name;
+        return this.getName();
     }
 }
