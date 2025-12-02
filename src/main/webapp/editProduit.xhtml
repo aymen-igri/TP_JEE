@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Edit Product</title>
+
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h1> Edit Product</h1>
+
+        <div class="info-box">
+            Editing Product ID: #{produitBean.produit.id}
+        </div>
+
+        <h:messages styleClass="message error" />
+
+        <h:form>
+            <h:inputHidden value="#{produitBean.produit.id}"/>
+
+            <div class="form-group">
+                <label for="nomProduit">Product Name:</label>
+                <h:inputText id="nomProduit"
+                             value="#{produitBean.produit.nomProduit}"
+                             required="true"
+                             requiredMessage="Product name is required"
+                             styleClass="input"/>
+            </div>
+
+            <div class="form-group">
+                <label for="designation">Designation:</label>
+                <h:inputText id="designation"
+                             value="#{produitBean.produit.designation}"
+                             required="true"
+                             requiredMessage="Designation is required"
+                             styleClass="input"/>
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Price (€):</label>
+                <h:inputText id="prix"
+                             value="#{produitBean.produit.prix}"
+                             required="true"
+                             requiredMessage="Price is required"
+                             converterMessage="Please enter a valid price"
+                             styleClass="input">
+                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                </h:inputText>
+            </div>
+
+            <div>
+                <h:commandButton value="Update Product"
+                                 action="#{produitBean.updateProduit}"
+                                 styleClass="btn btn-warning"/>
+                <h:button value="Cancel"
+                          outcome="listProduits"
+                          styleClass="btn btn-secondary"/>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>

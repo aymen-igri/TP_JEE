@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: black;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #8fbbff
+        }
+        .btn {
+            padding: 12px 30px;
+            margin: 10px 5px 0 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: white;
+            color: blue;
+            border :solid;
+            border-color: blue;
+            transition: 0.5s;
+        }
+        .btn-primary:hover {
+            background-color: blue;
+            color: white;
+            transition: 0.5s;
+
+
+        }
+        .btn-secondary {
+            background-color: white;
+            color: red;
+            border-color: red;
+            transition: 0.5s;
+        }
+        .btn-secondary:hover {
+            background-color: red;
+            color: white;
+            border-color: red;
+            transition: 0.5s;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .error {
+            color: #721c24;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h1>Add New Product</h1>
+
+        <h:messages styleClass="message error" />
+
+        <h:form>
+            <div class="form-group">
+                <label for="nomProduit">Product Name:</label>
+                <h:inputText id="nomProduit"
+                             value="#{produitBean.produit.nomProduit}"
+                             required="true"
+                             requiredMessage="Product name is required"
+                             styleClass="input"/>
+            </div>
+
+            <div class="form-group">
+                <label for="designation">Designation:</label>
+                <h:inputText id="designation"
+                             value="#{produitBean.produit.designation}"
+                             required="true"
+                             requiredMessage="Designation is required"
+                             styleClass="input"/>
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Price (€):</label>
+                <h:inputText id="prix"
+                             value="#{produitBean.produit.prix}"
+                             required="true"
+                             requiredMessage="Price is required"
+                             converterMessage="Please enter a valid price"
+                             styleClass="input">
+                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                </h:inputText>
+            </div>
+
+            <div>
+                <h:commandButton value="Save Product"
+                                 action="#{produitBean.addProduit()}"
+                                 styleClass="btn btn-primary"/>
+                <h:button value="Cancel"
+                          outcome="listProduits"
+                          styleClass="btn btn-secondary"/>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>
